@@ -1,50 +1,56 @@
-<%= form_for @restaurant, :html => {:multipart => true} do |f| %>
-  <% if @restaurant.errors.any? %>
-  <div id="errorExplanation">
-    <h2><%= pluralize(@restaurant.errors.count, "error") %> kept
-      you from saving this restaurant:</h2>
-    <ul>
-    <% @restaurant.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
+<%= form_for @restaurant, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :name, :class => 'text_field' %>
+    </div>
   </div>
-  <% end %>
-  <p>
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </p>
- 
-  <p>
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
-  </p>
+  <div class="control-group">
+    <%= f.label :description, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :description, :class => 'text_area' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :address, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :address, :class => 'text_area' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :phone, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :phone, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :image, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :image, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :menu, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :menu, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :latitude, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :latitude, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :longitude, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :longitude, :class => 'text_field' %>
+    </div>
+  </div>
 
-  <p>
-    <%= f.label :address %><br>
-    <%= f.text_area :address %>
-  </p>
-
-  <p>
-    <%= f.label :phone %><br>
-    <%= f.text_area :phone %>
-  </p>
-
-  <p>
-    <%= f.label :image %>
-    <%= image_tag(@restaurant.image_url) if @restaurant.image? %>
-    <%= f.file_field :image %>
-    <%= f.hidden_field :image_cache %>
-  </p>
-
-   <p>
-    <%= f.label :menu %>
-    <%= image_tag(@restaurant.menu_url) if @restaurant.menu? %>
-    <%= f.file_field :menu %>
-    <%= f.hidden_field :menu_cache %>
-  </p>
- 
-  <p>
-    <%= f.submit %>
-  </p>
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                restaurants_path, :class => 'btn' %>
+  </div>
 <% end %>

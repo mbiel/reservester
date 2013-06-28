@@ -32,6 +32,10 @@ gem "fog", "~> 1.3.1"
 
 gem 'jquery-rails'
 
+gem 'geocoder'
+
+gem 'rspec-rails'
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
