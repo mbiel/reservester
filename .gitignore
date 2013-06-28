@@ -13,3 +13,9 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+# Ignore credential-carrying config files
+*fog.rb
+
+# Ignore uploads folder
+/public/uploads

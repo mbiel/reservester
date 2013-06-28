@@ -36,6 +36,13 @@
     <%= f.file_field :image %>
     <%= f.hidden_field :image_cache %>
   </p>
+
+   <p>
+    <%= f.label :menu %>
+    <%= image_tag(@restaurant.menu_url) if @restaurant.menu? %>
+    <%= f.file_field :menu %>
+    <%= f.hidden_field :menu_cache %>
+  </p>
  
   <p>
     <%= f.submit %>
