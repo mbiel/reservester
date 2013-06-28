@@ -24,6 +24,12 @@ group :assets do
   gem 'twitter-bootstrap-rails'
 end
 
+gem 'carrierwave'
+
+gem "rmagick"
+
+gem "fog", "~> 1.3.1"
+
 gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password
