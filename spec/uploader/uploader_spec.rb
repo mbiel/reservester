@@ -1,5 +1,5 @@
 require 'spec_helper'
-#require 'support/fog_helper'
+require 'support/fog_helper'
 require 'carrierwave/test/matchers'
 
 describe ImageUploader do
