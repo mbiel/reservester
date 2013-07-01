@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130701162534) do
+ActiveRecord::Schema.define(:version => 20130701201759) do
 
   create_table "owners", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -31,6 +31,13 @@ ActiveRecord::Schema.define(:version => 20130701162534) do
   add_index "owners", ["email"], :name => "index_owners_on_email", :unique => true
   add_index "owners", ["reset_password_token"], :name => "index_owners_on_reset_password_token", :unique => true
 
+  create_table "owners_roles", :id => false, :force => true do |t|
+    t.integer "owner_id"
+    t.integer "role_id"
+  end
+
+  add_index "owners_roles", ["owner_id", "role_id"], :name => "index_owners_roles_on_owner_id_and_role_id"
+
   create_table "restaurants", :force => true do |t|
     t.string   "name"
     t.text     "description"
@@ -44,5 +51,16 @@ ActiveRecord::Schema.define(:version => 20130701162534) do
     t.float    "longitude"
     t.integer  "owner_id"
   end
+
+  create_table "roles", :force => true do |t|
+    t.string   "name"
+    t.integer  "resource_id"
+    t.string   "resource_type"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "roles", ["name", "resource_type", "resource_id"], :name => "index_roles_on_name_and_resource_type_and_resource_id"
+  add_index "roles", ["name"], :name => "index_roles_on_name"
 
 end

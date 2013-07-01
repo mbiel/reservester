@@ -1,4 +1,5 @@
 class Restaurant < ActiveRecord::Base
+  resourcify
   attr_accessible :address, :description, :name, :phone, :image, :image_cache, :menu, :menu_cache, :latitude, :longitude, :owner
   validates :name, presence: true
   validates :description, presence: true
