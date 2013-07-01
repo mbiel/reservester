@@ -13,13 +13,11 @@
   <dt><strong><%= model_class.human_attribute_name(:phone) %>:</strong></dt>
   <dd><%= @restaurant.phone %></dd>
   <dt><strong><%= model_class.human_attribute_name(:image) %>:</strong></dt>
-  <dd><%= @restaurant.image %></dd>
+  <dd><%= image_tag @restaurant.image.masthead.url if @restaurant.image? %></dd>
   <dt><strong><%= model_class.human_attribute_name(:menu) %>:</strong></dt>
-  <dd><%= @restaurant.menu %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:latitude) %>:</strong></dt>
-  <dd><%= @restaurant.latitude %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:longitude) %>:</strong></dt>
-  <dd><%= @restaurant.longitude %></dd>
+  <dd><%= link_to 'Open PDF', @restaurant.menu_url if @restaurant.menu? %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:map) %></strong></dt>
+    <dd><%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@restaurant.latitude}%2C#{@restaurant.longitude}" %></dd>
 </dl>
 
 <div class="form-actions">

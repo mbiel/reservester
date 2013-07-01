@@ -5,32 +5,24 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:name) %></th>
       <th><%= model_class.human_attribute_name(:description) %></th>
       <th><%= model_class.human_attribute_name(:address) %></th>
       <th><%= model_class.human_attribute_name(:phone) %></th>
       <th><%= model_class.human_attribute_name(:image) %></th>
       <th><%= model_class.human_attribute_name(:menu) %></th>
-      <th><%= model_class.human_attribute_name(:latitude) %></th>
-      <th><%= model_class.human_attribute_name(:longitude) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
   <tbody>
     <% @restaurants.each do |restaurant| %>
       <tr>
-        <td><%= link_to restaurant.id, restaurant_path(restaurant) %></td>
-        <td><%= restaurant.name %></td>
+        <td><%= link_to restaurant.name, restaurant_path(restaurant) %></td>
         <td><%= restaurant.description %></td>
         <td><%= restaurant.address %></td>
         <td><%= restaurant.phone %></td>
-        <td><%= restaurant.image %></td>
-        <td><%= restaurant.menu %></td>
-        <td><%= restaurant.latitude %></td>
-        <td><%= restaurant.longitude %></td>
-        <td><%=l restaurant.created_at %></td>
+        <td><%= image_tag restaurant.image.thumb.url if restaurant.image? %></td>
+        <td><%= link_to 'Open PDF', restaurant.menu.url if restaurant.menu? %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_restaurant_path(restaurant), :class => 'btn btn-mini' %>

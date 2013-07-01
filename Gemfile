@@ -24,9 +24,9 @@ group :assets do
   gem 'twitter-bootstrap-rails'
 end
 
-gem 'carrierwave'
-
 gem "rmagick"
+
+gem 'carrierwave'
 
 gem "fog", "~> 1.3.1"
 
@@ -34,7 +34,10 @@ gem 'jquery-rails'
 
 gem 'geocoder'
 
-gem 'rspec-rails'
+group :development, :test do
+  gem 'rspec'
+  gem 'rspec-rails', '>= 2.6.1'
+end
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
