@@ -15,12 +15,16 @@ class RestaurantsController < ApplicationController
 
 
 	def new
+    #@owner = Owner.find(params[:owner_id])
+    #@owner = current_owner
 		@restaurant = Restaurant.new
 	end
 
 	def create
-    @owner = Owner.find(params[:owner_id])
+    #@owner = Owner.find(params[:owner_id])
+
 		@restaurant = Restaurant.new(params[:restaurant])
+    @restaurant.owner = current_owner
 
 		if @restaurant.save
 			redirect_to @restaurant

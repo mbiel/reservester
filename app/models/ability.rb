@@ -3,13 +3,9 @@ class Ability
 
   def initialize(owner)
     if owner.has_role? :admin
-      can :edit, :all
-      can :update, :all
-      can :destroy, :all
+      can :manage, :all
     else
-      can :edit, Restaurant if owner.has_role?(:owner, Restaurant)
-      can :update, Restaurant if owner.has_role?(:owner, Restaurant)
-      can :destroy, Restaurant if owner.has_role?(:owner, Restaurant)
+      can :manage, Restaurant :owner_id => owner.id
     end
     # Define abilities for the passed in user here. For example:
     #
