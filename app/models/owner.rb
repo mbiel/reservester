@@ -11,4 +11,8 @@ class Owner < ActiveRecord::Base
 
   has_many :restaurants
   # attr_accessible :title, :body
+
+  validates_presence_of :name
+  validates_uniqueness_of :name
+
 end
