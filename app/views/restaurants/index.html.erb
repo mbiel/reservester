@@ -41,7 +41,7 @@
   </tbody>
 </table>
 
-<% if can? :create, Restaurant %>
+<% if owner_signed_in? %>
     <%= link_to t('.new', :default => t("helpers.links.new")),
             new_restaurant_path,
             :class => 'btn btn-primary' %>
