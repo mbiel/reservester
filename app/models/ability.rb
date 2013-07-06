@@ -2,10 +2,15 @@ class Ability
   include CanCan::Ability
 
   def initialize(owner)
+    owner ||= Owner.new
     if owner.has_role? :admin
       can :manage, :all
     else
-      can :manage, Restaurant :owner_id => owner.id
+      #can :manage, Restaurant :owner_id => owner.id
+      can :manage, Restaurant do |restaurant|
+        restaurant.try(:owner) == owner
+      end
+      can :show, :all
     end
     # Define abilities for the passed in user here. For example:
     #
@@ -34,4 +39,4 @@ class Ability
     # See the wiki for details:
     # https://github.com/ryanb/cancan/wiki/Defining-Abilities
   end
-end
+  end

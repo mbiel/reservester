@@ -1,5 +1,6 @@
 class RestaurantsController < ApplicationController
-  before_filter :authenticate_owner!, :except => [:index, :show]
+  load_and_authorize_resource
+  #before_filter :authenticate_owner!, :except => [:index, :show]
   #before_filter :check_ownership!, :only => [:edit, :update, :destroy]
   #
   #def check_ownership
