@@ -40,6 +40,12 @@ gem 'jquery-rails'
 
 gem 'geocoder'
 
+gem 'devise'
+
+gem 'cancan'
+
+gem 'rolify'
+
 group :development, :test do
   gem 'rspec'
   gem 'rspec-rails', '>= 2.6.1'
