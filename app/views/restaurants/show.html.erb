@@ -30,12 +30,14 @@
             <th>Email</th>
             <th>Reservation Time</th>
             <th>Message</th>
+            <th></th>
         </tr>
         <% @restaurant.reservations.each do |reservation| %>
             <tr>
                 <td><%= reservation.email %></td>
                 <td><%= reservation.request_time %></td>
                 <td><%= reservation.message %></td>
+                <td><%= link_to 'Mark as Confirmed', reservation_path(reservation), :method => :delete, :confirm => 'Confirm this reservation? It will no longer appear on this page' %></td>
             </tr>
         <% end %>
     </table>

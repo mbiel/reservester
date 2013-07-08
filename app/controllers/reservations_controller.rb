@@ -15,7 +15,6 @@ class ReservationsController < ApplicationController
   end
 
   def destroy
-    @restaurant = Restaurant.find params[:restaurant_id]
     @reservation.destroy
 
     redirect_to @reservation.restaurant
