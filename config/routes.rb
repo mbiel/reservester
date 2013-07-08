@@ -7,6 +7,13 @@ Reservester::Application.routes.draw do
   devise_for :owners
 
   resources :restaurants
+
+  resources :reservations
+
+  resources :restaurants, :except => [:new, :create] do
+    resources :reservations, :only => [:new, :create]
+  end
+
   get "welcome/index"
 
   # The priority is based upon order of creation:

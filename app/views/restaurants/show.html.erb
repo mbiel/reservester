@@ -24,7 +24,6 @@
 </dl>
 
 <% if current_owner == @restaurant.owner %>
-    <p>This is where the list of reservations goes!</p>
     <h3>Reservations</h3>
     <table class="table table-striped">
         <tr>
@@ -41,7 +40,7 @@
         <% end %>
     </table>
 <% else %>
-    <p>This is where the form to make a new reservation goes.</p>
+    <%= render 'reservations/form', :reservation => @reservation %>
 <% end %>
 
 <div class="form-actions">
