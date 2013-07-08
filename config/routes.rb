@@ -1,5 +1,9 @@
 Reservester::Application.routes.draw do
 
+  get "reservation/create"
+
+  get "reservation/destroy"
+
   devise_for :owners
 
   resources :restaurants

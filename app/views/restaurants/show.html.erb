@@ -1,6 +1,7 @@
 <%- model_class = Restaurant -%>
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+  <p id="notice"><%= notice %></p>
 </div>
 
 <dl class="dl-horizontal">
@@ -21,6 +22,27 @@
   <dt><strong><%= model_class.human_attribute_name(:map) %></strong></dt>
     <dd><%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@restaurant.latitude}%2C#{@restaurant.longitude}" %></dd>
 </dl>
+
+<% if current_owner == @restaurant.owner %>
+    <p>This is where the list of reservations goes!</p>
+    <h3>Reservations</h3>
+    <table class="table table-striped">
+        <tr>
+            <th>Email</th>
+            <th>Reservation Time</th>
+            <th>Message</th>
+        </tr>
+        <% @restaurant.reservations.each do |reservation| %>
+            <tr>
+                <td><%= reservation.email %></td>
+                <td><%= reservation.request_time %></td>
+                <td><%= reservation.message %></td>
+            </tr>
+        <% end %>
+    </table>
+<% else %>
+    <p>This is where the form to make a new reservation goes.</p>
+<% end %>
 
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),

@@ -11,6 +11,12 @@ class Ability
         restaurant.try(:owner) == owner
       end
       can :show, :all
+
+      #can :create, Reservation
+      #can :destroy, Reservation do |reservation|
+        #reservation.try(reservation.restaurant.owner) == owner
+      #end
+
     end
     # Define abilities for the passed in user here. For example:
     #

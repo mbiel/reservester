@@ -13,9 +13,7 @@ class RestaurantsController < ApplicationController
   #  end
   #end
 
-
-
-	def new
+  def new
     #@owner = Owner.find(params[:owner_id])
     #@owner = current_owner
 		@restaurant = Restaurant.new
