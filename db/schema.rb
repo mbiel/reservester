@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130706183152) do
+ActiveRecord::Schema.define(:version => 20130708153837) do
 
   create_table "owners", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -38,6 +38,14 @@ ActiveRecord::Schema.define(:version => 20130706183152) do
   end
 
   add_index "owners_roles", ["owner_id", "role_id"], :name => "index_owners_roles_on_owner_id_and_role_id"
+
+  create_table "reservations", :force => true do |t|
+    t.string   "email"
+    t.datetime "request_time"
+    t.integer  "restaurant_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
 
   create_table "restaurants", :force => true do |t|
     t.string   "name"
