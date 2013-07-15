@@ -8,6 +8,7 @@ class ReservationsController < ApplicationController
 
 
     if @reservation.save
+      ReservationMailer.reservation_notification(@reservation).deliver
       redirect_to @restaurant, :notice => 'Reservation successful!'
     else
       render 'restaurant/show'
@@ -15,6 +16,7 @@ class ReservationsController < ApplicationController
   end
 
   def destroy
+
     @reservation.destroy
 
     redirect_to @reservation.restaurant

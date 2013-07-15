@@ -49,6 +49,7 @@ gem 'rolify'
 group :development, :test do
   gem 'rspec'
   gem 'rspec-rails', '>= 2.6.1'
+  gem 'debugger'
 end
 
 # To use ActiveModel has_secure_password

@@ -14,7 +14,8 @@ class Ability
 
       can :create, Reservation
       can :destroy, Reservation do |reservation|
-        reservation.try(reservation.restaurant.owner) == owner
+        restaurant = reservation.restaurant
+        restaurant.try(:owner) == owner
       end
 
     end
