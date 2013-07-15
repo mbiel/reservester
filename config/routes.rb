@@ -1,5 +1,7 @@
 Reservester::Application.routes.draw do
 
+  get "owners/dashboard"
+
   get "reservation/create"
 
   get "reservation/destroy"
@@ -12,6 +14,10 @@ Reservester::Application.routes.draw do
 
   resources :restaurants, :except => [:new, :create] do
     resources :reservations, :only => [:new, :create]
+  end
+
+  resources :owners do
+    resources :restaurants, :only => [:new, :create]
   end
 
   get "welcome/index"
