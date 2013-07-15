@@ -2,7 +2,7 @@
   <div class="control-group">
     <%= f.label :name, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :name, :class => 'text_field', :id => 'fullname', :name => 'fullname', :'data-required' => 'true' %>
+      <%= f.text_field :name, :class => 'text_field', :'data-required' => 'true' %>
     </div>
   </div>
   <div class="control-group">
@@ -39,6 +39,20 @@
         <%= f.hidden_field :menu_cache, :class => 'hidden_field' %>
     </div>
   </div>
+    <div class="control-group">
+    <%= f.label :menu, :class => 'control-label' %>
+    <div class="controls">
+        <%= image_tag(@restaurant.menu_url) if @restaurant.menu? %>
+        <%= f.file_field :menu, :class => 'file_field' %>
+        <%= f.hidden_field :menu_cache, :class => 'hidden_field' %>
+    </div>
+</div>
+<% for category in Category.find(:all) %>
+        <div>
+            <%= check_box_tag "restaurant[category_ids][]", category.id, @restaurant.categories.include?(category) %>
+      <%= category.name %>
+    </div>
+    <% end %>
 
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>

@@ -20,6 +20,7 @@ class RestaurantsController < ApplicationController
 	end
 
 	def create
+        debugger
     #@owner = Owner.find(params[:owner_id])
 
 		@restaurant = Restaurant.new(params[:restaurant])
