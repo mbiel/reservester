@@ -12,6 +12,8 @@ Reservester::Application.routes.draw do
 
   resources :reservations
 
+  resources :categories
+
   resources :restaurants, :except => [:new, :create] do
     resources :reservations, :only => [:new, :create]
   end
