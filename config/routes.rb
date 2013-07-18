@@ -1,5 +1,7 @@
 Reservester::Application.routes.draw do
 
+  get "category/index"
+
   get "owners/dashboard"
 
   get "reservation/create"
@@ -21,6 +23,8 @@ Reservester::Application.routes.draw do
   resources :owners do
     resources :restaurants, :only => [:new, :create]
   end
+
+  resources :categories
 
   get "welcome/index"
 

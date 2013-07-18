@@ -17,6 +17,12 @@ class RestaurantsController < ApplicationController
     #@owner = Owner.find(params[:owner_id])
     #@owner = current_owner
 		@restaurant = Restaurant.new
+        @categories = Category.where("name like ?", "%#{params[:q]}%")
+            respond_to do |format|
+                format.html
+                format.json { render :json => @categories.map(&:attributes) }
+            end
+
 	end
 
 	def create

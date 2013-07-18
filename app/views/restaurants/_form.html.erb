@@ -31,14 +31,6 @@
         <%= f.hidden_field :image_cache, :class => 'hidden_field' %>
     </div>
   </div>
-  <div class="control-group">
-    <%= f.label :menu, :class => 'control-label' %>
-    <div class="controls">
-        <%= image_tag(@restaurant.menu_url) if @restaurant.menu? %>
-        <%= f.file_field :menu, :class => 'file_field' %>
-        <%= f.hidden_field :menu_cache, :class => 'hidden_field' %>
-    </div>
-  </div>
     <div class="control-group">
     <%= f.label :menu, :class => 'control-label' %>
     <div class="controls">
@@ -47,14 +39,14 @@
         <%= f.hidden_field :menu_cache, :class => 'hidden_field' %>
     </div>
 </div>
-<% for category in Category.find(:all) %>
-        <div>
-            <%= check_box_tag "restaurant[category_ids][]", category.id, @restaurant.categories.include?(category) %>
-      <%= category.name %>
-    </div>
-    <% end %>
 
-  <div class="form-actions">
+    <p>
+        <%= f.label :category_tokens, "Categories" %><br />
+        <%= f.text_field :category_tokens, "data-pre" => @restaurant.categories.map(&:attributes).to_json %>
+    </p>
+
+
+<div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                 restaurants_path, :class => 'btn' %>
