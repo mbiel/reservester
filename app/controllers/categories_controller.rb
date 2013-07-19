@@ -6,4 +6,9 @@ class CategoriesController < ApplicationController
           format.json { render :json => @categories.map(&:attributes) }
       end
   end
+
+  def show
+	@category = Category.find(params[:id])
+    @restaurants = @category.restaurants
+  end
 end
